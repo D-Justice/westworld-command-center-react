@@ -3,7 +3,7 @@
       { "id": 1,
         "firstName": "Dolores",
         "lastName": "Abernathy",
-        "active": false,
+        "active": true,
         "imageUrl": "https://vignette.wikia.nocookie.net/westworld/images/5/51/Dolores_Abernathy_Vanishing_Point.jpg/revision/latest?cb=20180613181613",
         "gender": "Female",
         "area": "high_plains",

@@ -2,25 +2,42 @@ import React, { Component } from 'react';
 import '../stylesheets/Headquarters.css';
 import { Grid } from 'semantic-ui-react';
 import Details from './Details'
+import ColdStorage from './ColdStorage'
+import LogPanel from './LogPanel'
 
 
 class Headquarters extends Component {
-  // Remember, there's many ways to do this. This doesn't have to be a class component. It's up to you.
+  constructor(props) {
+    super(props)
 
-  render(){
-    return(
+  }
+
+  render() {
+    return (
       <Grid celled='internally'>
         <Grid.Column width={8}>
 
-        {/* Something goes here.... */}
+          <ColdStorage state={this.props.state} selectedId={this.props.selectedId} />
 
         </Grid.Column>
         <Grid.Column width={5}>
-          <Details />
+          <Details 
+          area={this.props.state.areas}
+            updateErrorLogs={this.props.updateErrorLogs}
+            updateArea={this.props.updateArea}
+            activatedToggle={this.props.activatedToggle}
+            allHosts={this.props.state.hosts}
+            selectedHost={this.props.state.hosts.filter(each => each.id === this.props.state.selected) || false}
+          />
         </Grid.Column>
         <Grid.Column width={3}>
 
-        {/* and here. Take visual cues from the screenshot/video in the Readme. */}
+          <LogPanel 
+          isActivated={this.props.state.buttonActivate} 
+          updateErrorLogs={this.props.updateErrorLogs} 
+          toggleActivationOfAll={this.props.toggleActivationOfAll} 
+          errorLogs={this.props.state.errorLogs} 
+          />
 
         </Grid.Column>
       </Grid>
